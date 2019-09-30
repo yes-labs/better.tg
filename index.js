@@ -11,6 +11,15 @@ const tpl = require('./lib/templates.js');
 const app = new Koa();
 const router = new Router();
 
+app.use(async (ctx, next) => {
+  try {
+    await next()
+    if (ctx.status === 404) {
+      ctx.body = tpl.page("404");
+    }
+  }
+})
+
 router.get('/', async function(ctx, next) {
   ctx.body = tpl.page('home');
 });
