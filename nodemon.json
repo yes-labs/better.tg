@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "lib",
+    "views",
+    "index.js"
+  ],
+  "ext": "js,json,html,hbs"
+}
