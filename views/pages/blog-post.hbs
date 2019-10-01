@@ -1,0 +1,15 @@
+<main>
+  <section id="mainsection">
+    <h1><span>Latest</span>News</h1>
+    <div id="content">
+      <article>
+        <span class="date">{{moment date "D MMMM YYYY"}}</span>
+        <a href="/latest-news/{{slug}}"><h3>{{title}}</h3></a>
+        {{{html}}}
+      </article>
+    </div>
+  </section>
+
+  {{> sidebar }}
+
+</main>

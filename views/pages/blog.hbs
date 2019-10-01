@@ -1,0 +1,17 @@
+<main>
+  <section id="mainsection">
+    <h1><span>Latest</span>News</h1>
+    <div id="content">
+      {{#each posts}}
+      <article>
+        <span class="date">{{moment date "D MMMM YYYY"}}</span>
+        <a href="/latest-news/{{slug}}"><h3>{{title}}</h3></a>
+        {{{html}}}
+      </article>
+      {{/each}}
+    </div>
+  </section>
+
+  {{> sidebar }}
+
+</main>

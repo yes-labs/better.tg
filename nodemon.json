@@ -2,7 +2,8 @@
   "watch": [
     "lib",
     "views",
+    "blog",
     "index.js"
   ],
-  "ext": "js,json,html,hbs"
+  "ext": "js,json,html,hbs,md"
 }
