@@ -17,7 +17,7 @@ app.use(async (ctx, next) => {
     if (ctx.status === 404) {
       ctx.body = tpl.page("404");
     }
-  }
+  } catch(e) { }
 })
 
 router.get('/', async function(ctx, next) {
