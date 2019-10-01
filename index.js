@@ -9,6 +9,8 @@ const serve = require('koa-static');
 const tpl = require('./lib/templates.js');
 const blog = require('./lib/blog.js');
 
+const redirects = JSON.parse(fs.readFileSync('./lib/redirects.json'));
+
 const app = new Koa();
 const router = new Router();
 
@@ -23,6 +25,13 @@ app.use(async (ctx, next) => {
   }
 })
 
+app.use(async (ctx, next) => {
+  if (ctx.request.path in redirects) {
+    ctx.redirect(redirects[ctx.request.path]);
+  }
+  await next();
+})
+
 router.get('/', async function(ctx, next) {
   ctx.body = tpl.page('home', {posts: blog.latest});
 });
@@ -32,7 +41,10 @@ router.get('/latest-news', async function(ctx, next) {
 });
 
 router.get('/latest-news/:post', async function(ctx, next) {
-  ctx.body = tpl.page('blog-post', blog.posts.find(o => o.slug === ctx.params.post));
+  let post = blog.posts.find(o => o.slug === ctx.params.post);
+  if (post) {
+    ctx.body = tpl.page('blog-post', post);
+  }
 });
 
 router.get('/*', async function(ctx, next) {
