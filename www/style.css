@@ -352,6 +352,7 @@ sidebar {
   float: left;
   width: 200px;
   margin-right: 15px;
+  margin-bottom: 15px;
   border: 4px solid #CFCCC2;
 }
 #mainsection #content h3 {
